@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <title>Kelly Residence — Project Checklist</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
 <style>
 
@@ -36,7 +34,7 @@
   --logo-bg:rgba(0,0,0,.04);
   --logo-border:rgba(0,0,0,.12);
 }
-body{background:var(--bg);color:var(--text1);font-family:'DM Sans',Arial,system-ui,sans-serif;font-size:14px;line-height:1.6;min-height:100vh;transition:background .25s,color .25s}
+body{background:var(--bg);color:var(--text1);font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;min-height:100vh;transition:background .25s,color .25s}
 button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inherit}a{color:inherit;text-decoration:none}
 .app{max-width:960px;margin:0 auto;padding:2rem 1.5rem 3rem}
 
@@ -53,19 +51,19 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .hero-btn:hover{color:#fff;border-color:rgba(255,255,255,.3)}
 .hero-content{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem 1.4rem}
 .hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.75rem}
-.hero-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.hero-eyebrow{font-family:Arial,Helvetica,sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
 .hero-h1{font-size:20px;font-weight:500;color:#fff;margin-bottom:2px;line-height:1.2}
-.hero-sub{font-size:11px;color:rgba(237,232,220,.7);font-family:'DM Mono',monospace}
+.hero-sub{font-size:11px;color:rgba(237,232,220,.7);font-family:Arial,Helvetica,sans-serif}
 .header-stats{display:flex;align-items:center;gap:14px}
 .phase-mini{text-align:center;cursor:pointer}
-.phase-mini-label{font-family:'DM Mono',monospace;font-size:10px;color:rgba(237,232,220,.55);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.phase-mini-label{font-family:Arial,Helvetica,sans-serif;font-size:10px;color:rgba(237,232,220,.55);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
 .phase-mini-bar{width:44px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-bottom:3px}
 .phase-mini-fill{height:100%;border-radius:2px;transition:width .4s}
-.phase-mini-pct{font-size:10px;color:rgba(237,232,220,.55);font-family:'DM Mono',monospace}
+.phase-mini-pct{font-size:10px;color:rgba(237,232,220,.55);font-family:Arial,Helvetica,sans-serif}
 .stat-divider{width:1px;height:32px;background:rgba(255,255,255,.15)}
 .overall{text-align:right}
-.overall-num{font-size:26px;font-weight:300;font-family:'DM Mono',monospace;color:#fff;line-height:1}
-.overall-label{font-size:10px;color:rgba(237,232,220,.55);margin-top:3px;font-family:'DM Mono',monospace;letter-spacing:.06em}
+.overall-num{font-size:26px;font-weight:300;font-family:Arial,Helvetica,sans-serif;color:#fff;line-height:1}
+.overall-label{font-size:10px;color:rgba(237,232,220,.55);margin-top:3px;font-family:Arial,Helvetica,sans-serif;letter-spacing:.06em}
 
 /* sync banner removed */
 
@@ -74,20 +72,20 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .tab{padding:10px 14px;font-size:13px;font-weight:400;color:var(--text2);background:transparent;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:7px;transition:color .15s;cursor:pointer;white-space:nowrap}
 .tab:hover{color:var(--text1)}
 .tab.active{color:var(--text1);font-weight:500}
-.tab-badge{font-size:10px;font-weight:500;border-radius:10px;padding:1px 7px;font-family:'DM Mono',monospace;border:1px solid transparent;flex-shrink:0}
+.tab-badge{font-size:10px;font-weight:500;border-radius:10px;padding:1px 7px;font-family:Arial,Helvetica,sans-serif;border:1px solid transparent;flex-shrink:0}
 .tab-x{margin-left:-4px;padding:1px 4px;font-size:12px;color:var(--text3);border:none;background:transparent;cursor:pointer;border-radius:3px;line-height:1}
 .tab-x:hover{color:var(--red)}
 .tabs-spacer{flex:1}
 .add-phase-btn{display:flex;align-items:center;gap:4px;padding:10px;font-size:12px;color:var(--text3);background:transparent;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s;cursor:pointer}
 .add-phase-btn:hover{color:var(--text2)}
-.save-indicator{display:flex;align-items:center;gap:5px;font-size:11px;padding:10px 0;font-family:'DM Mono',monospace;transition:color .3s;flex-shrink:0}
+.save-indicator{display:flex;align-items:center;gap:5px;font-size:11px;padding:10px 0;font-family:Arial,Helvetica,sans-serif;transition:color .3s;flex-shrink:0}
 .save-ok{color:var(--teal)}.save-saving{color:var(--warn)}
 
 /* PHASE BAR */
 .phase-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem}
 .phase-bar-track{flex:1;height:2px;background:var(--border2);border-radius:2px;overflow:hidden}
 .phase-bar-fill{height:100%;border-radius:2px;transition:width .4s}
-.phase-stats{display:flex;gap:14px;font-size:11px;color:var(--text2);flex-shrink:0;flex-wrap:wrap;font-family:'DM Mono',monospace}
+.phase-stats{display:flex;gap:14px;font-size:11px;color:var(--text2);flex-shrink:0;flex-wrap:wrap;font-family:Arial,Helvetica,sans-serif}
 .phase-stats span b{font-weight:500}
 
 /* FILTERS */
@@ -96,13 +94,13 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .filter-btn:hover{color:var(--text1)}
 .filter-btn.active{color:var(--text1);background:var(--surface2);border-color:var(--border2)}
 .filter-spacer{flex:1}
-.phase-desc{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;font-style:italic}
+.phase-desc{font-size:11px;color:var(--text3);font-family:Arial,Helvetica,sans-serif;font-style:italic}
 
 /* SECTIONS */
 .section{margin-bottom:2rem}
 .section-header{display:flex;align-items:center;gap:8px;padding-bottom:7px;margin-bottom:2px;border-bottom:1px solid var(--border)}
-.section-name-style{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text2)}
-.section-count{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);margin-left:auto}
+.section-name-style{font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text2)}
+.section-count{font-family:Arial,Helvetica,sans-serif;font-size:10px;color:var(--text3);margin-left:auto}
 
 /* ITEMS */
 .item{border-bottom:1px solid var(--border)}
@@ -116,13 +114,13 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .inline-text.label-style{font-size:13px;color:var(--text1);line-height:1.5;flex:1;min-width:0}
 .inline-text.label-style.done{color:var(--text3);text-decoration:line-through}
 .inline-text.label-style.flagged{color:var(--warn)}
-.inline-text.section-style{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text2)}
+.inline-text.section-style{font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text2)}
 .inline-input{width:100%;background:var(--surface2);color:var(--text1);border:1px solid var(--gold-dim);border-radius:var(--radius);padding:3px 8px;font-size:13px;outline:none}
-.inline-input.section-input{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);background:transparent;border:none;border-bottom:1px solid var(--gold-dim);border-radius:0;padding:0 2px}
+.inline-input.section-input{font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);background:transparent;border:none;border-bottom:1px solid var(--gold-dim);border-radius:0;padding:0 2px}
 .inline-input.tab-input{background:transparent;border:none;border-bottom:1px solid var(--gold-dim);border-radius:0;padding:0 2px;font-size:13px;font-weight:500;color:var(--text1);width:70px}
 
 /* STATUS BADGE */
-.status-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;border-radius:var(--radius);padding:3px 9px;cursor:pointer;border:1px solid transparent;transition:opacity .15s;flex-shrink:0;font-family:'DM Mono',monospace;white-space:nowrap;min-width:100px}
+.status-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;border-radius:var(--radius);padding:3px 9px;cursor:pointer;border:1px solid transparent;transition:opacity .15s;flex-shrink:0;font-family:Arial,Helvetica,sans-serif;white-space:nowrap;min-width:100px}
 .status-btn:hover{opacity:.8}
 .s-todo{color:var(--text2);background:var(--surface2);border-color:var(--border2)}
 .s-inprogress{color:var(--warn);background:var(--warn-bg);border-color:#5A3A08}
@@ -130,7 +128,7 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 
 /* OWNER BADGE */
 .owner-wrap{position:relative;flex-shrink:0}
-.owner-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:2px 7px;white-space:nowrap;font-family:'DM Mono',monospace;cursor:pointer;transition:border-color .15s;width:168px;flex-shrink:0;overflow:hidden}
+.owner-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:2px 7px;white-space:nowrap;font-family:Arial,Helvetica,sans-serif;cursor:pointer;transition:border-color .15s;width:168px;flex-shrink:0;overflow:hidden}
 .owner-badge:hover{border-color:var(--border2);color:var(--text1)}
 .owner-name-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
 .owner-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
@@ -140,14 +138,14 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .op-input{width:100%;background:var(--bg);color:var(--text1);border:1px solid var(--border2);border-radius:var(--radius);padding:4px 8px;font-size:12px;outline:none;margin-bottom:5px}
 .op-input:focus{border-color:var(--gold-dim)}
 .op-list{max-height:180px;overflow-y:auto}
-.op-item{display:flex;align-items:center;gap:7px;padding:4px 6px;border-radius:var(--radius);cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;color:var(--text2)}
+.op-item{display:flex;align-items:center;gap:7px;padding:4px 6px;border-radius:var(--radius);cursor:pointer;font-size:12px;font-family:Arial,Helvetica,sans-serif;color:var(--text2)}
 .op-item:hover{background:var(--bg);color:var(--text1)}
 .op-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .op-email{margin-left:auto;color:var(--text3);font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:80px}
 
 /* DEADLINE */
 .dl-wrap{position:relative;flex-shrink:0}
-.dl-chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;border-radius:var(--radius);padding:2px 7px;cursor:pointer;font-family:'DM Mono',monospace;white-space:nowrap;border:1px solid transparent;transition:all .15s}
+.dl-chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;border-radius:var(--radius);padding:2px 7px;cursor:pointer;font-family:Arial,Helvetica,sans-serif;white-space:nowrap;border:1px solid transparent;transition:all .15s}
 .dl-none{color:var(--text3)}.dl-none:hover{color:var(--text2);background:var(--surface2);border-color:var(--border)}
 .dl-future{color:var(--text2);background:var(--surface2);border-color:var(--border)}
 .dl-soon{color:var(--warn);background:var(--warn-bg);border-color:#5A3A08}
@@ -155,7 +153,7 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .dl-overdue{color:var(--red);background:var(--red-bg);border-color:#5A1808}
 .dl-x{opacity:.5;margin-left:1px;cursor:pointer;line-height:1}.dl-x:hover{opacity:1}
 .dl-pop{position:absolute;top:calc(100% + 4px);right:0;z-index:200;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius);padding:6px 8px;box-shadow:0 8px 24px rgba(0,0,0,.55)}
-.dl-pop input[type=date]{background:var(--bg);color:var(--text1);border:1px solid var(--border2);border-radius:var(--radius);padding:4px 8px;font-family:'DM Mono',monospace;font-size:12px;outline:none;color-scheme:dark}
+.dl-pop input[type=date]{background:var(--bg);color:var(--text1);border:1px solid var(--border2);border-radius:var(--radius);padding:4px 8px;font-family:Arial,Helvetica,sans-serif;font-size:12px;outline:none;color-scheme:dark}
 [data-theme="light"] .dl-pop input[type=date]{color-scheme:light}
 
 /* ICON BUTTONS */
@@ -170,15 +168,15 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 
 /* NOTES */
 .note-area{padding:0 0 8px 0;padding-left:calc(100px + 7px)}
-.note-view{font-size:12px;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:6px 10px;cursor:text;line-height:1.5;font-family:'DM Mono',monospace}
+.note-view{font-size:12px;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:6px 10px;cursor:text;line-height:1.5;font-family:Arial,Helvetica,sans-serif}
 .note-view:hover{border-color:var(--border2)}
-.note-edit{width:100%;font-size:12px;color:var(--text1);background:var(--surface2);border:1px solid var(--gold-dim);border-radius:var(--radius);padding:6px 10px;line-height:1.5;resize:vertical;outline:none;font-family:'DM Mono',monospace;min-height:54px}
+.note-edit{width:100%;font-size:12px;color:var(--text1);background:var(--surface2);border:1px solid var(--gold-dim);border-radius:var(--radius);padding:6px 10px;line-height:1.5;resize:vertical;outline:none;font-family:Arial,Helvetica,sans-serif;min-height:54px}
 
 /* LINK POPOVER */
 .link-pop{position:absolute;top:calc(100% + 4px);right:0;z-index:200;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius);padding:8px 10px;box-shadow:0 8px 24px rgba(0,0,0,.55);width:300px;display:flex;flex-direction:column;gap:5px}
-.link-pop-input{background:var(--bg);color:var(--text1);border:1px solid var(--border2);border-radius:var(--radius);padding:5px 8px;font-size:12px;outline:none;font-family:'DM Mono',monospace;width:100%}
+.link-pop-input{background:var(--bg);color:var(--text1);border:1px solid var(--border2);border-radius:var(--radius);padding:5px 8px;font-size:12px;outline:none;font-family:Arial,Helvetica,sans-serif;width:100%}
 .link-pop-input:focus{border-color:var(--gold-dim)}
-.link-pop-hint{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace}
+.link-pop-hint{font-size:10px;color:var(--text3);font-family:Arial,Helvetica,sans-serif}
 .link-pop-btns{display:flex;gap:5px;justify-content:flex-end}
 
 /* ADD BUTTONS */
@@ -191,13 +189,13 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300}
 .panel{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100vw;background:var(--surface);border-left:1px solid var(--border);z-index:301;overflow-y:auto;padding:1.5rem 1.5rem 3rem}
 .panel h2{font-size:16px;font-weight:500;margin-bottom:3px}
-.panel-sub{font-size:12px;color:var(--text2);font-family:'DM Mono',monospace;margin-bottom:1.25rem;line-height:1.5}
+.panel-sub{font-size:12px;color:var(--text2);font-family:Arial,Helvetica,sans-serif;margin-bottom:1.25rem;line-height:1.5}
 .panel-close{position:absolute;top:1.25rem;right:1.25rem}
 .tm-row{display:flex;align-items:center;gap:7px;padding:7px 9px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:5px;position:relative}
 .tm-dot{width:20px;height:20px;border-radius:50%;flex-shrink:0;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
 .tm-dot:hover{border-color:var(--gold)}
 .tm-name{flex:1;background:transparent;border:none;color:var(--text1);font-size:13px;outline:none;min-width:60px}
-.tm-email{flex:1.5;background:transparent;border:none;color:var(--text2);font-size:12px;font-family:'DM Mono',monospace;outline:none;min-width:80px}
+.tm-email{flex:1.5;background:transparent;border:none;color:var(--text2);font-size:12px;font-family:Arial,Helvetica,sans-serif;outline:none;min-width:80px}
 .tm-name:focus,.tm-email:focus{border-bottom:1px solid var(--gold-dim);color:var(--text1)}
 .tm-sep{color:var(--text3);font-size:10px;flex-shrink:0}
 .cp-pop{display:flex;flex-wrap:wrap;gap:4px;padding:8px;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,.55);z-index:400;position:absolute;left:0;top:calc(100% + 4px)}
@@ -210,10 +208,10 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;display:flex;align-items:center;justify-content:center}
 .modal{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:1.5rem;width:340px;max-width:calc(100vw - 2rem)}
 .modal h3{font-size:15px;font-weight:500;margin-bottom:1rem}
-.modal-sub{font-size:12px;color:var(--text2);margin-bottom:.9rem;line-height:1.5;font-family:'DM Mono',monospace}
+.modal-sub{font-size:12px;color:var(--text2);margin-bottom:.9rem;line-height:1.5;font-family:Arial,Helvetica,sans-serif}
 .modal-in{width:100%;background:var(--bg);color:var(--text1);border:1px solid var(--border2);border-radius:var(--radius);padding:6px 10px;font-size:13px;outline:none;margin-bottom:8px}
 .modal-in:focus{border-color:var(--gold-dim)}
-.modal-ta{width:100%;background:var(--bg);color:var(--text1);border:1px solid var(--border2);border-radius:var(--radius);padding:6px 10px;font-size:12px;outline:none;min-height:100px;resize:vertical;line-height:1.5;font-family:'DM Mono',monospace}
+.modal-ta{width:100%;background:var(--bg);color:var(--text1);border:1px solid var(--border2);border-radius:var(--radius);padding:6px 10px;font-size:12px;outline:none;min-height:100px;resize:vertical;line-height:1.5;font-family:Arial,Helvetica,sans-serif}
 .modal-ta:focus{border-color:var(--gold-dim)}
 .modal-colors{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
 .modal-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
@@ -226,11 +224,11 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .schedule-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.5rem}
 .schedule-container{min-width:700px}
 .sch-header-row{display:flex;margin-bottom:1px}
-.sch-label-hdr{width:200px;min-width:200px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);padding:0 0 6px}
+.sch-label-hdr{width:200px;min-width:200px;flex-shrink:0;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);padding:0 0 6px}
 .sch-months{flex:1;display:flex;border-bottom:2px solid var(--border)}
-.sch-month-hdr{flex:1;text-align:center;font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);padding:0 0 6px;position:relative;min-width:0;overflow:hidden;white-space:nowrap}
+.sch-month-hdr{flex:1;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);padding:0 0 6px;position:relative;min-width:0;overflow:hidden;white-space:nowrap}
 .sch-month-hdr.sch-today-month{color:var(--gold)}
-.sch-group-hdr{padding:12px 0 4px;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);border-top:1px solid var(--border)}
+.sch-group-hdr{padding:12px 0 4px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);border-top:1px solid var(--border)}
 .sch-group-hdr:first-child{border-top:none;padding-top:4px}
 .sch-row{display:flex;align-items:center;margin-bottom:3px;min-height:32px}
 .sch-row-label{width:200px;min-width:200px;flex-shrink:0;font-size:12px;color:var(--text1);padding-right:12px;line-height:1.3}
@@ -248,15 +246,15 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .sch-handle-right{right:0;border-radius:0 8px 8px 0}
 .sch-handle::after{content:'';display:block;width:2px;height:10px;background:rgba(255,255,255,.7);border-radius:1px}
 .sch-milestone{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;border:2px solid var(--bg);z-index:4;pointer-events:none}
-.sch-ms-label{position:absolute;top:calc(50% + 10px);transform:translateX(-50%);font-size:8.5px;white-space:nowrap;color:var(--text3);font-family:'DM Mono',monospace;pointer-events:none;letter-spacing:.03em}
-.sch-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:1rem;font-size:11px;font-family:'DM Mono',monospace;color:var(--text2)}
+.sch-ms-label{position:absolute;top:calc(50% + 10px);transform:translateX(-50%);font-size:8.5px;white-space:nowrap;color:var(--text3);font-family:Arial,Helvetica,sans-serif;pointer-events:none;letter-spacing:.03em}
+.sch-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:1rem;font-size:11px;font-family:Arial,Helvetica,sans-serif;color:var(--text2)}
 .sch-legend-item{display:flex;align-items:center;gap:5px}
 .sch-legend-dot{width:10px;height:10px;border-radius:5px}
-.sch-drag-hint{font-size:10px;font-family:'DM Mono',monospace;color:var(--text3);margin-top:.75rem;text-align:center}
+.sch-drag-hint{font-size:10px;font-family:Arial,Helvetica,sans-serif;color:var(--text3);margin-top:.75rem;text-align:center}
 
 /* FOOTER */
-.footer{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
-.loading{display:flex;align-items:center;justify-content:center;min-height:60vh;font-family:'DM Mono',monospace;font-size:12px;color:var(--text2);letter-spacing:.1em}
+.footer{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:11px;color:var(--text3);font-family:Arial,Helvetica,sans-serif}
+.loading{display:flex;align-items:center;justify-content:center;min-height:60vh;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--text2);letter-spacing:.1em}
 
 /* MOBILE */
 @media(max-width:767px){
@@ -427,7 +425,7 @@ function useSync(phases,team,onRemoteUpdate){
       dbRef.current.set({phases:ph,team:tm,ts:Date.now(),device:DEVICE_ID})
         .then(()=>setStatus('synced'))
         .catch(()=>setStatus('error'));
-    },5000);
+    },1000);
   },[]);
 
   const push=useCallback((ph,tm)=>{if(pushFn.current)pushFn.current(ph,tm);},[]);
@@ -443,6 +441,8 @@ function useSync(phases,team,onRemoteUpdate){
       ref.on('value',snap=>{
         const data=snap.val();
         if(!data||data.device===DEVICE_ID)return;
+        // Only accept data that has a valid phases array with known phase IDs
+        if(!data.phases||!Array.isArray(data.phases)||!data.phases.length)return;
         onRemoteUpdate(data.phases,data.team);
         setStatus('synced');
       });
@@ -502,7 +502,7 @@ function DeadlineChip({deadline,onSave}){
         min="2026-01-01" max="2030-12-31"
         style={{background:"var(--surface2)",color:"var(--text1)",border:"1px solid var(--gold-dim)",
                 borderRadius:"var(--radius)",padding:"2px 6px",fontSize:11,
-                fontFamily:"'DM Mono',monospace",outline:"none",colorScheme:"dark light"}}
+                fontFamily:"Arial,Helvetica,sans-serif",outline:"none",colorScheme:"dark light"}}
         onChange={e=>{if(e.target.value){onSave(e.target.value);setEd(false);}}}
         onKeyDown={e=>{if(e.key==="Escape")setEd(false);}}/>
       <span style={{fontSize:11,color:"var(--text3)",cursor:"pointer"}} onClick={()=>setEd(false)}>✕</span>
@@ -522,11 +522,10 @@ function OwnerBadge({owner,team,onUpdate}){
   if(ed){
     return<select autoFocus value={owner}
       onChange={e=>{onUpdate({owner:e.target.value});setEd(false);}}
-      onBlur={()=>setEd(false)}
       onKeyDown={e=>{if(e.key==="Escape")setEd(false);}}
       style={{background:"var(--surface2)",color:"var(--text1)",border:"1px solid var(--gold-dim)",
               borderRadius:"var(--radius)",padding:"2px 5px",fontSize:11,
-              fontFamily:"'DM Mono',monospace",outline:"none",maxWidth:200}}>
+              fontFamily:"Arial,Helvetica,sans-serif",outline:"none",maxWidth:200}}>
       {team.map(t=><option key={t.id} value={t.name}>{t.name}{t.org?" · "+t.org:""}</option>)}
       {!team.find(t=>t.name===owner)&&owner&&<option value={owner}>{owner}</option>}
     </select>;
@@ -574,7 +573,7 @@ function ItemRow({item,phaseId,sectionId,team,onUpdate,onDelete,noteOpen,onToggl
           spanClass={"inline-text label-style"+(item.status==="done"?" done":"")+(item.flag?" flagged":"")}
           inputClass="inline-input"/>
         {item.link&&<a href={item.link} target="_blank" rel="noreferrer"
-          style={{display:"inline-flex",alignItems:"center",gap:3,fontSize:10,color:"var(--teal)",marginLeft:6,fontFamily:"DM Mono,monospace"}}>
+          style={{display:"inline-flex",alignItems:"center",gap:3,fontSize:10,color:"var(--teal)",marginLeft:6,fontFamily:"Arial,Helvetica,sans-serif"}}>
           <i className="ti ti-link" style={{fontSize:10}}/>link</a>}
       </div>
       <div className="item-meta">
@@ -665,7 +664,7 @@ function ScheduleView(){
   return<div>
     <div className="sch-legend">
       {schedule.map(g=><div key={g.id} className="sch-legend-item"><div className="sch-legend-dot" style={{background:g.color}}/><span>{g.group}</span></div>)}
-      <button onClick={()=>save(DEFAULT_SCHEDULE)} style={{marginLeft:"auto",fontSize:10,color:"var(--text3)",background:"none",border:"1px solid var(--border)",borderRadius:"var(--radius)",padding:"2px 8px",cursor:"pointer",fontFamily:"DM Mono,monospace"}}>Reset</button>
+      <button onClick={()=>save(DEFAULT_SCHEDULE)} style={{marginLeft:"auto",fontSize:10,color:"var(--text3)",background:"none",border:"1px solid var(--border)",borderRadius:"var(--radius)",padding:"2px 8px",cursor:"pointer",fontFamily:"Arial,Helvetica,sans-serif"}}>Reset</button>
     </div>
     <div className="schedule-wrap"><div className="schedule-container">
       <div className="sch-header-row">
@@ -684,7 +683,7 @@ function ScheduleView(){
               <div className="sch-bar" style={{left:(sf*100)+"%",width:(wf*100)+"%",background:group.color}}>
                 <div className="sch-handle sch-handle-left" onMouseDown={e=>startDrag(e,group.id,row.id,"start")} onTouchStart={e=>startDrag(e,group.id,row.id,"start")} title={"Start: "+fmtDate(row.start)}/>
                 <div className="sch-handle sch-handle-right" onMouseDown={e=>startDrag(e,group.id,row.id,"end")} onTouchStart={e=>startDrag(e,group.id,row.id,"end")} title={"End: "+fmtDate(row.end)}/>
-                <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,color:"rgba(255,255,255,.85)",fontFamily:"DM Mono,monospace",pointerEvents:"none",overflow:"hidden",padding:"0 12px",whiteSpace:"nowrap"}}>
+                <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,color:"rgba(255,255,255,.85)",fontFamily:"Arial,Helvetica,sans-serif",pointerEvents:"none",overflow:"hidden",padding:"0 12px",whiteSpace:"nowrap"}}>
                   {wf>0.08?fmtDate(row.start)+" → "+fmtDate(row.end):""}
                 </div>
               </div>
@@ -1067,6 +1066,7 @@ const DATA=[
 function App(){
   const [phases,setPhases]=useState(null);
   const [team,setTeam]=useState(null);
+  const [logoSrc]=useState(()=>window.__LOGO__||"");
   const [tab,setTab]=useState(null);
   const [filter,setFilter]=useState("all");
   const [expanded,setExpanded]=useState(new Set());
@@ -1082,8 +1082,6 @@ function App(){
 
   // Startup — load from localStorage with migration
   useEffect(()=>{
-    // Logo
-    const inj=()=>{const el=document.getElementById("hero-logo");if(el&&window.__LOGO__)el.src=window.__LOGO__;else setTimeout(inj,80);};inj();
     // Phases
     try{
       const stored=localStorage.getItem(SK);
@@ -1175,8 +1173,8 @@ function App(){
           <button className="hero-btn" onClick={toggle}><i className={"ti "+(dark?"ti-sun":"ti-moon")} style={{fontSize:13}}/>{dark?"Light":"Dark"}</button>
           <button className={"hero-btn"+(showTeam?" on":"")} onClick={()=>setShowTeam(s=>!s)}><i className="ti ti-users" style={{fontSize:13}}/> Team</button>
         </div>
-        <div className="hero-logo-wrap" style={{background:"#fff",borderRadius:7,padding:"5px 12px 5px 8px",boxShadow:"0 2px 12px rgba(0,0,0,.35)"}}>
-          <img id="hero-logo" className="hero-logo" src="" alt="ch x tld" style={{height:44,display:"block"}}/>
+        <div style={{background:"#fff",borderRadius:7,padding:"5px 14px 5px 8px",boxShadow:"0 2px 14px rgba(0,0,0,.4)",display:"inline-flex",alignItems:"center"}}>
+          <img src={logoSrc} alt="ch x tld" style={{height:46,display:"block"}}/>
         </div>
       </div>
       <div className="hero-content">
@@ -1216,6 +1214,13 @@ function App(){
         onClick={()=>{if(status==="offline"||status==="error")setShowFirebase(true);}}>
         <i className={"ti "+si.icon}/> {status==="synced"?"Synced":status==="offline"?"Offline":status==="error"?"Error":"Saving…"}
       </span>
+      {phases&&team&&status!=="offline"&&<button
+        className="save-indicator save-ok"
+        style={{cursor:"pointer",marginLeft:4,background:"var(--surface2)",border:"1px solid var(--border)",borderRadius:"var(--radius)",padding:"2px 8px"}}
+        onClick={()=>push(phases,team)}
+        title="Push changes to Firebase now">
+        <i className="ti ti-cloud-upload" style={{fontSize:12}}/> Sync now
+      </button>}
     </div>
 
     {/* CONTENT */}
