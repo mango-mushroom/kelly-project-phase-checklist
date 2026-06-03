@@ -46,7 +46,7 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 [data-theme="light"] .hero-grad{background:linear-gradient(to top,rgba(15,13,11,.92) 0%,rgba(15,13,11,.5) 55%,rgba(15,13,11,.1) 100%)}
 .hero-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:.85rem 1.4rem;z-index:10}
 .hero-logo-wrap{display:inline-flex;align-items:center;background:#fff;border-radius:7px;padding:5px 14px 5px 8px;box-shadow:0 2px 12px rgba(0,0,0,.35)}
-.hero-logo{height:38px;display:block}
+.hero-logo{height:48px;display:block}
 .hero-btn-row{display:flex;align-items:center;gap:7px}
 .hero-btn{display:flex;align-items:center;gap:5px;padding:5px 12px;font-size:12px;font-weight:500;color:rgba(237,232,220,.75);background:rgba(15,13,11,.5);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);transition:all .15s;backdrop-filter:blur(4px)}
 .hero-btn:hover{color:#fff;border-color:rgba(255,255,255,.3)}
@@ -129,9 +129,9 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 
 /* OWNER BADGE */
 .owner-wrap{position:relative;flex-shrink:0}
-.owner-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:2px 7px;white-space:nowrap;font-family:'DM Mono',monospace;cursor:pointer;transition:border-color .15s;max-width:170px;overflow:hidden}
+.owner-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:2px 7px;white-space:nowrap;font-family:'DM Mono',monospace;cursor:pointer;transition:border-color .15s;width:168px;flex-shrink:0;overflow:hidden}
 .owner-badge:hover{border-color:var(--border2);color:var(--text1)}
-.owner-name-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.owner-name-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
 .owner-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .owner-link{color:inherit;text-decoration:none}
 .owner-link:hover{text-decoration:underline;color:var(--gold)}
@@ -309,23 +309,23 @@ const DEVICE_ID=uid();
 const debounce=(fn,ms)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};};
 
 const DEFAULT_TEAM=[
-  {id:"t1",name:"André",full:"André Cardoso Mandel, LEED AP",role:"Project Manager",company:"ch x tld",email:"andre@chxtld.com",color:"#1D9E75",group:"chxtld"},
-  {id:"t2",name:"Toby",full:"Toby Long, AIA",role:"Principal / Architect of Record",company:"ch x tld",email:"toby@chxtld.com",color:"#378ADD",group:"chxtld"},
-  {id:"t3",name:"Chandra",full:"Chandra Baerg, AIA",role:"Architect",company:"ch x tld",email:"chandra@chxtld.com",color:"#7F77DD",group:"chxtld"},
-  {id:"t4",name:"Abby",full:"Abby Wittman",role:"Project Manager",company:"ch x tld",email:"abby@chxtld.com",color:"#D4537E",group:"chxtld"},
-  {id:"t5",name:"Mai",full:"Mai Thor",role:"Interior Designer",company:"ch x tld",email:"mai@chxtld.com",color:"#639922",group:"chxtld"},
-  {id:"t6",name:"Denise",full:"Denise Kabigting",role:"Project Support",company:"ch x tld",email:"denise@chxtld.com",color:"#9B59B6",group:"chxtld"},
-  {id:"t7",name:"Matt Petroni",full:"Matt Petroni",role:"Civil Engineer",company:"Triad / Holmes Associates",email:"mpetroni@thainc.com",color:"#BA7517",group:"consultant"},
-  {id:"t8",name:"Greg DeLeon",full:"Greg DeLeon",role:"Structural Engineer",company:"ISE Engineers",email:"Greg@iseengineers.com",color:"#D85A30",group:"consultant"},
-  {id:"t9",name:"John Bacon",full:"John Bacon",role:"Modular Builder",company:"Method Homes",email:"john@methodhomes.net",color:"#16A085",group:"consultant"},
-  {id:"t10",name:"Keith Knutson",full:"Keith Knutson",role:"Factory / Fabrication",company:"Method Homes",email:"keith@methodhomes.net",color:"#16A085",group:"consultant"},
-  {id:"t11",name:"Christian Edwards",full:"Christian Edwards",role:"General Contractor",company:"Timberline Construction",email:"christian@timberlinemail.com",color:"#888780",group:"consultant"},
-  {id:"t12",name:"Timothy Miller",full:"Timothy Miller",role:"Geotechnical Engineer",company:"Reno Tahoe Geo Associates",email:"",color:"#D4537E",group:"consultant"},
-  {id:"t13",name:"James Piercy",full:"James Piercy",role:"Arborist",company:"Arbor Solutions",email:"",color:"#639922",group:"consultant"},
-  {id:"t14",name:"Paul Farrow",full:"Paul Farrow",role:"DRC Chairman",company:"Schaffer's Mill DRC",email:"",color:"#C49840",group:"drc"},
-  {id:"t15",name:"Roland Kelly",full:"Roland Kelly",role:"Client",company:"",email:"rkelly90272@gmail.com",color:"#C49840",group:"client"},
-  {id:"t16",name:"Sally Kelly",full:"Sally Kelly",role:"Client",company:"",email:"snkawana@hotmail.com",color:"#E8A830",group:"client"},
-  {id:"t17",name:"Arnett",full:"Arnett Associates",role:"Land Surveyor",company:"Arnett Associates",email:"",color:"#888780",group:"consultant"},
+  {id:"t1",name:"André",full:"André Cardoso Mandel, LEED AP",role:"Project Manager",company:"ch x tld",org:"CHxTLD",email:"andre@chxtld.com",color:"#1D9E75",group:"chxtld"},
+  {id:"t2",name:"Toby",full:"Toby Long, AIA",role:"Principal / Architect of Record",company:"ch x tld",org:"CHxTLD",email:"toby@chxtld.com",color:"#378ADD",group:"chxtld"},
+  {id:"t3",name:"Chandra",full:"Chandra Baerg, AIA",role:"Architect",company:"ch x tld",org:"CHxTLD",email:"chandra@chxtld.com",color:"#7F77DD",group:"chxtld"},
+  {id:"t4",name:"Abby",full:"Abby Wittman",role:"Project Manager",company:"ch x tld",org:"CHxTLD",email:"abby@chxtld.com",color:"#D4537E",group:"chxtld"},
+  {id:"t5",name:"Mai",full:"Mai Thor",role:"Interior Designer",company:"ch x tld",org:"CHxTLD",email:"mai@chxtld.com",color:"#639922",group:"chxtld"},
+  {id:"t6",name:"Denise",full:"Denise Kabigting",role:"Project Support",company:"ch x tld",org:"CHxTLD",email:"denise@chxtld.com",color:"#9B59B6",group:"chxtld"},
+  {id:"t7",name:"Matt Petroni",full:"Matt Petroni",role:"Civil Engineer",company:"Triad / Holmes Associates",org:"THA",email:"mpetroni@thainc.com",color:"#BA7517",group:"consultant"},
+  {id:"t8",name:"Greg DeLeon",full:"Greg DeLeon",role:"Structural Engineer",company:"ISE Engineers",org:"ISE",email:"Greg@iseengineers.com",color:"#D85A30",group:"consultant"},
+  {id:"t9",name:"John Bacon",full:"John Bacon",role:"Modular Builder",company:"Method Homes",org:"Method",email:"john@methodhomes.net",color:"#16A085",group:"consultant"},
+  {id:"t10",name:"Keith Knutson",full:"Keith Knutson",role:"Factory / Fabrication",company:"Method Homes",org:"Method",email:"keith@methodhomes.net",color:"#16A085",group:"consultant"},
+  {id:"t11",name:"Christian Edwards",full:"Christian Edwards",role:"General Contractor",company:"Timberline Construction",org:"Timberline",email:"christian@timberlinemail.com",color:"#888780",group:"consultant"},
+  {id:"t12",name:"Timothy Miller",full:"Timothy Miller",role:"Geotechnical Engineer",company:"Reno Tahoe Geo Associates",org:"RTGA",email:"",color:"#D4537E",group:"consultant"},
+  {id:"t13",name:"James Piercy",full:"James Piercy",role:"Arborist",company:"Arbor Solutions",org:"Arbor",email:"",color:"#639922",group:"consultant"},
+  {id:"t14",name:"Paul Farrow",full:"Paul Farrow",role:"DRC Chairman",company:"Schaffer's Mill DRC",org:"DRC",email:"",color:"#C49840",group:"drc"},
+  {id:"t15",name:"Roland Kelly",full:"Roland Kelly",role:"Client",company:"",org:"Client",email:"rkelly90272@gmail.com",color:"#C49840",group:"client"},
+  {id:"t16",name:"Sally Kelly",full:"Sally Kelly",role:"Client",company:"",org:"Client",email:"snkawana@hotmail.com",color:"#E8A830",group:"client"},
+  {id:"t17",name:"Arnett",full:"Arnett Associates",role:"Land Surveyor",company:"Arnett Associates",org:"Arnett",email:"",color:"#888780",group:"consultant"},
 ];
 
 const DEFAULT_SCHEDULE=[
@@ -348,6 +348,7 @@ const DEFAULT_SCHEDULE=[
 
 function ownerColor(o,team){if(!o)return"#888780";const m=team.find(t=>t.name===o||o===t.full);return m?m.color:"#888780";}
 function ownerEmail(o,team){if(!o)return"";const m=team.find(t=>t.name===o||o===t.full);return m?m.email:"";}
+function ownerFull(o,team){if(!o)return o;const m=team.find(t=>t.name===o||o===t.full);if(!m)return o;const n=(m.full||m.name).split(",")[0].trim();const parts=n.split(" ");const name=parts.length>2?parts[0]+" "+parts[parts.length-1]:n;return m.org?name+" · "+m.org:name;}
 function ini(o){const p=(o||"").split(" ");return(p[0]?.[0]||"").toUpperCase()+(p[1]?.[0]||"").toUpperCase();}
 function dlClass(d){if(!d)return"none";const t=new Date();t.setHours(0,0,0,0);const du=new Date(d+"T00:00:00");const diff=Math.round((du-t)/86400000);if(diff<0)return"overdue";if(diff===0)return"today";if(diff<=7)return"soon";return"future";}
 function fmtDate(d){if(!d)return"";return new Date(d+"T00:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"});}
@@ -383,7 +384,9 @@ function useTheme(){
 function getStoredConfig(){try{const s=localStorage.getItem(SK_FB);if(s)return JSON.parse(s);if(window.__FB_CFG__)return window.__FB_CFG__;}catch{}return null;}
 function useSync(phases,team,onRemoteUpdate){
   const [status,setStatus]=useState(()=>getStoredConfig()?'connecting':'offline');
-  const dbRef=useRef(null),pushRef=useRef(null),ignoreNext=useRef(false);
+  const dbRef=useRef(null),pushRef=useRef(null);
+  const lastLocalWrite=useRef(0); // timestamp of our last write
+
   useEffect(()=>{
     const cfg=getStoredConfig();
     if(!cfg||!window.firebase)return;
@@ -394,7 +397,10 @@ function useSync(phases,team,onRemoteUpdate){
       ref.on('value',snap=>{
         const data=snap.val();
         if(!data)return;
-        if(ignoreNext.current){ignoreNext.current=false;return;}
+        // Skip updates from this device — those are our own echoes
+        if(data.device===DEVICE_ID)return;
+        // Skip updates arriving within 5s of our last write (race condition guard)
+        if(Date.now()-lastLocalWrite.current<5000)return;
         onRemoteUpdate(data.phases,data.team);
         setStatus('synced');
       });
@@ -402,28 +408,43 @@ function useSync(phases,team,onRemoteUpdate){
     }catch(e){setStatus('error');console.error(e);}
     return()=>{if(dbRef.current)dbRef.current.off();};
   },[]);
-  pushRef.current=useMemo(()=>debounce((ph,tm)=>{
-    if(!dbRef.current){setStatus('offline');return;}
-    setStatus('syncing');
-    ignoreNext.current=true;
-    dbRef.current.set({phases:ph,team:tm,ts:Date.now(),device:DEVICE_ID}).then(()=>setStatus('synced')).catch(()=>setStatus('error'));
-  },900),[]);
+
+  useEffect(()=>{
+    // Debounce: 30s so edits aren't interrupted by constant writes
+    pushRef.current=debounce((ph,tm)=>{
+      if(!dbRef.current){setStatus('offline');return;}
+      setStatus('syncing');
+      lastLocalWrite.current=Date.now();
+      dbRef.current.set({phases:ph,team:tm,ts:Date.now(),device:DEVICE_ID})
+        .then(()=>setStatus('synced')).catch(()=>setStatus('error'));
+    },30000);
+  },[]);
+
   const connect=useCallback((raw)=>{
     try{
       const parsed=typeof raw==='string'?JSON.parse(raw):raw;
-      if(!parsed.databaseURL)throw new Error("databaseURL missing");
+      if(!parsed.databaseURL)throw new Error('databaseURL missing');
       try{localStorage.setItem(SK_FB,JSON.stringify(parsed));}catch{}
       const app=window.firebase.apps?.length?window.firebase.apps[0]:window.firebase.initializeApp(parsed);
       const ref=window.firebase.database(app).ref('kelly_271_v7');
       dbRef.current=ref;
-      ref.on('value',snap=>{const data=snap.val();if(!data)return;if(ignoreNext.current){ignoreNext.current=false;return;}onRemoteUpdate(data.phases,data.team);setStatus('synced');});
+      ref.on('value',snap=>{
+        const data=snap.val();
+        if(!data)return;
+        if(data.device===DEVICE_ID)return;
+        if(Date.now()-lastLocalWrite.current<5000)return;
+        onRemoteUpdate(data.phases,data.team);
+        setStatus('synced');
+      });
       setStatus('synced');
       return null;
     }catch(e){return e.message;}
   },[onRemoteUpdate]);
+
   const push=useCallback((ph,tm)=>{if(pushRef.current)pushRef.current(ph,tm);},[]);
   return{status,push,connect};
 }
+
 
 // ── COMPONENTS ────────────────────────────────────────────────────────────
 
@@ -447,47 +468,61 @@ function StatusBtn({status,onClick}){
 }
 
 function DeadlineChip({deadline,onSave}){
-  const [editing,setEditing]=useState(false);
   const cls=dlClass(deadline);
-  if(editing){
-    return<span style={{display:"inline-flex",alignItems:"center",gap:3}}>
-      <input type="date" autoFocus
-        value={deadline||""}
-        style={{colorScheme:"dark light",background:"var(--surface2)",color:"var(--text1)",border:"1px solid var(--gold-dim)",borderRadius:"var(--radius)",padding:"2px 6px",fontSize:11,fontFamily:"DM Mono,monospace",outline:"none",cursor:"text"}}
-        onChange={e=>{onSave(e.target.value);setEditing(false);}}
-        onKeyDown={e=>{if(e.key==="Escape")setEditing(false);}}/>
-      <span style={{fontSize:11,color:"var(--text3)",cursor:"pointer",padding:"0 2px"}} onClick={()=>setEditing(false)}>✕</span>
-    </span>;
-  }
-  return<span className={"dl-chip dl-"+cls} style={{cursor:"pointer"}} onClick={()=>setEditing(true)}>
-    {deadline
-      ?<>{fmtDate(deadline)}<span className="dl-x" onClick={e=>{e.stopPropagation();onSave("");}}>×</span></>
-      :<span style={{color:"var(--text3)"}}>+ date</span>}
+  const colors={
+    none:   {bg:"transparent",    color:"var(--text3)", border:"var(--border)"},
+    future: {bg:"var(--surface2)",color:"var(--text2)", border:"var(--border)"},
+    soon:   {bg:"var(--warn-bg)", color:"var(--warn)",  border:"#5A3A08"},
+    today:  {bg:"var(--surface2)",color:"var(--gold)",  border:"var(--gold-dim)"},
+    overdue:{bg:"var(--red-bg)",  color:"var(--red)",   border:"#5A1808"},
+  };
+  const c=colors[cls]||colors.none;
+  return<span style={{display:"inline-flex",alignItems:"center",gap:2,flexShrink:0}}>
+    <input
+      key={deadline||"empty"}
+      type="date"
+      defaultValue={deadline||""}
+      min="2026-01-01"
+      max="2030-12-31"
+      onChange={e=>{if(e.target.value)onSave(e.target.value);}}
+      style={{
+        width:116,colorScheme:"dark light",
+        background:c.bg,color:c.color,
+        border:"1px solid "+c.border,
+        borderRadius:"var(--radius)",
+        padding:"3px 5px",fontSize:11,
+        fontFamily:"'DM Mono',monospace",
+        outline:"none",cursor:"pointer",
+      }}/>
+    {deadline&&<span
+      onClick={()=>onSave("")}
+      title="Clear date"
+      style={{fontSize:11,color:"var(--text3)",cursor:"pointer",padding:"0 2px",userSelect:"none"}}
+    >×</span>}
   </span>;
 }
 
 function OwnerBadge({owner,team,onUpdate}){
-  const [editing,setEditing]=useState(false);
   const col=ownerColor(owner,team);
   const email=ownerEmail(owner,team);
-  if(editing){
-    return<select autoFocus
-      value={owner}
-      style={{background:"var(--surface2)",color:"var(--text1)",border:"1px solid var(--gold-dim)",borderRadius:"var(--radius)",padding:"2px 6px",fontSize:11,fontFamily:"DM Mono,monospace",outline:"none",cursor:"pointer",maxWidth:150}}
-      onChange={e=>{onUpdate({owner:e.target.value});setEditing(false);}}
-      onKeyDown={e=>{if(e.key==="Escape")setEditing(false);}}>
-      {team.map(t=><option key={t.id} value={t.name}>{t.name}</option>)}
-      {!team.find(t=>t.name===owner)&&<option value={owner}>{owner}</option>}
-    </select>;
-  }
-  return<button className="owner-badge" onClick={()=>setEditing(true)} title={email?owner+" — "+email:owner}>
-    <span className="owner-dot" style={{background:col}}/>
-    <span className="owner-name-text">
-      {email
-        ?<a className="owner-link" href={"mailto:"+email} onClick={e=>e.stopPropagation()}>{owner}</a>
-        :owner}
+  const full=ownerFull(owner,team);
+  const initials=ini(owner);
+  return<span style={{display:"inline-flex",alignItems:"center",gap:5,flexShrink:0,width:190}}>
+    <span title={email?full+" — "+email:full}
+      style={{width:20,height:20,borderRadius:"50%",background:col,display:"inline-flex",alignItems:"center",
+              justifyContent:"center",fontSize:8,fontWeight:700,color:"#fff",flexShrink:0,letterSpacing:0,cursor:"default"}}>
+      {initials}
     </span>
-  </button>;
+    <select value={owner}
+      onChange={e=>onUpdate({owner:e.target.value})}
+      style={{flex:1,minWidth:0,background:"var(--surface2)",color:"var(--text1)",
+              border:"1px solid var(--border)",borderRadius:"var(--radius)",
+              padding:"2px 4px",fontSize:11,fontFamily:"'DM Mono',monospace",
+              outline:"none",cursor:"pointer"}}>
+      {team.map(t=><option key={t.id} value={t.name}>{t.name}{t.org?" · "+t.org:""}</option>)}
+      {!team.find(t=>t.name===owner)&&owner&&<option value={owner}>{owner}</option>}
+    </select>
+  </span>;
 }
 
 function LinkEditor({link,onSave,onClose}){
