@@ -164,7 +164,8 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 .icon-btn.on-flag{background:var(--red-bg);border-color:#5A1808;color:var(--red)}
 .icon-btn.on-link{background:var(--green-bg);border-color:#1A4A28;color:var(--teal)}
 .icon-btn.del:hover{color:var(--red);background:var(--red-bg);border-color:#5A1808}
-.item-actions{display:flex;align-items:center;gap:3px;flex-shrink:0;padding-top:1px}
+.item-meta{display:flex;align-items:center;gap:5px;flex:0 1 auto;min-width:0;overflow:hidden}
+.item-icons{display:flex;align-items:center;gap:2px;flex-shrink:0;padding-top:0}
 
 /* NOTES */
 .note-area{padding:0 0 8px 0;padding-left:calc(100px + 7px)}
@@ -270,7 +271,8 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
   .tab-x,.add-phase-btn,.tabs-spacer,.save-indicator{display:none}
   .item-row{flex-wrap:wrap;gap:5px;padding:8px 0}
   .status-btn{min-width:84px;font-size:10px}
-  .item-actions{width:100%;padding-left:0;padding-top:3px}
+  .item-meta{max-width:100%;overflow:hidden}
+  .item-icons{padding-top:2px}
   .sch-row-label{width:130px;min-width:130px;font-size:11px}
   .sch-label-hdr{width:130px;min-width:130px}
   .filter-btn{padding:5px 10px;font-size:12px}
@@ -301,7 +303,7 @@ button{font-family:inherit;cursor:pointer}input,textarea,select{font-family:inhe
 <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
 const {useState,useEffect,useCallback,useRef,useMemo}=React;
-const SK="kelly_271_v6",SK_TEAM="kelly_271_v6_team",SK_FB="kelly_271_fb_cfg",SK_SCH="kelly_271_sch_v1";
+const SK="kelly_271_v6",SK_TEAM="kelly_271_v6_team",SK_FB="kelly_271_fb_cfg",SK_SCH="kelly_271_sch_v1",SK_TS="kelly_271_ts";
 const CYCLE={todo:"inprogress",inprogress:"done",done:"todo"};
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const PALETTE=["#1D9E75","#378ADD","#BA7517","#D85A30","#D4537E","#7F77DD","#639922","#E8A830","#C49840","#888780","#C43A2A","#9B59B6"];
@@ -382,41 +384,48 @@ function useTheme(){
 
 // Firebase sync
 function getStoredConfig(){try{const s=localStorage.getItem(SK_FB);if(s)return JSON.parse(s);if(window.__FB_CFG__)return window.__FB_CFG__;}catch{}return null;}
+// Timestamp helpers — track when local data was last authoritative
+function getSyncTs(){try{return parseInt(localStorage.getItem(SK_TS)||"0")||0;}catch{return 0;}}
+function setSyncTs(ts){try{localStorage.setItem(SK_TS,String(ts));}catch{}}
+
 function useSync(phases,team,onRemoteUpdate){
-  const [status,setStatus]=useState(()=>getStoredConfig()?'connecting':'offline');
-  const dbRef=useRef(null),pushRef=useRef(null);
-  const lastLocalWrite=useRef(0); // timestamp of our last write
+  const [status,setStatus]=useState(()=>getStoredConfig()?'synced':'offline');
+  const dbRef=useRef(null);
+  const pushRef=useRef(null);
 
   useEffect(()=>{
     const cfg=getStoredConfig();
     if(!cfg||!window.firebase)return;
     try{
-      const app=window.firebase.apps?.length?window.firebase.apps[0]:window.firebase.initializeApp(cfg);
+      const app=window.firebase.apps?.length
+        ?window.firebase.apps[0]
+        :window.firebase.initializeApp(cfg);
       const ref=window.firebase.database(app).ref('kelly_271_v7');
       dbRef.current=ref;
       ref.on('value',snap=>{
         const data=snap.val();
         if(!data)return;
-        // Skip updates from this device — those are our own echoes
-        if(data.device===DEVICE_ID)return;
-        // Skip updates arriving within 5s of our last write (race condition guard)
-        if(Date.now()-lastLocalWrite.current<5000)return;
+        // Only apply if Firebase timestamp is strictly newer than our local write stamp
+        const localTs=getSyncTs();
+        if(data.ts && data.ts<=localTs)return;
+        setSyncTs(data.ts||Date.now());
         onRemoteUpdate(data.phases,data.team);
         setStatus('synced');
       });
       setStatus('synced');
-    }catch(e){setStatus('error');console.error(e);}
+    }catch(e){setStatus('error');console.error('Firebase error:',e);}
     return()=>{if(dbRef.current)dbRef.current.off();};
   },[]);
 
   useEffect(()=>{
-    // Debounce: 30s so edits aren't interrupted by constant writes
     pushRef.current=debounce((ph,tm)=>{
       if(!dbRef.current){setStatus('offline');return;}
       setStatus('syncing');
-      lastLocalWrite.current=Date.now();
-      dbRef.current.set({phases:ph,team:tm,ts:Date.now(),device:DEVICE_ID})
-        .then(()=>setStatus('synced')).catch(()=>setStatus('error'));
+      const ts=Date.now();
+      setSyncTs(ts); // mark local data as authoritative at this timestamp
+      dbRef.current.set({phases:ph,team:tm,ts,device:DEVICE_ID})
+        .then(()=>setStatus('synced'))
+        .catch(e=>{console.error('Firebase write error:',e);setStatus('error');});
     },30000);
   },[]);
 
@@ -425,14 +434,17 @@ function useSync(phases,team,onRemoteUpdate){
       const parsed=typeof raw==='string'?JSON.parse(raw):raw;
       if(!parsed.databaseURL)throw new Error('databaseURL missing');
       try{localStorage.setItem(SK_FB,JSON.stringify(parsed));}catch{}
-      const app=window.firebase.apps?.length?window.firebase.apps[0]:window.firebase.initializeApp(parsed);
+      const app=window.firebase.apps?.length
+        ?window.firebase.apps[0]
+        :window.firebase.initializeApp(parsed);
       const ref=window.firebase.database(app).ref('kelly_271_v7');
       dbRef.current=ref;
       ref.on('value',snap=>{
         const data=snap.val();
         if(!data)return;
-        if(data.device===DEVICE_ID)return;
-        if(Date.now()-lastLocalWrite.current<5000)return;
+        const localTs=getSyncTs();
+        if(data.ts&&data.ts<=localTs)return;
+        setSyncTs(data.ts||Date.now());
         onRemoteUpdate(data.phases,data.team);
         setStatus('synced');
       });
@@ -507,7 +519,7 @@ function OwnerBadge({owner,team,onUpdate}){
   const email=ownerEmail(owner,team);
   const full=ownerFull(owner,team);
   const initials=ini(owner);
-  return<span style={{display:"inline-flex",alignItems:"center",gap:5,flexShrink:0,width:190}}>
+  return<span style={{display:"inline-flex",alignItems:"center",gap:5,flexShrink:1,minWidth:0,maxWidth:180,overflow:"hidden"}}>
     <span title={email?full+" — "+email:full}
       style={{width:20,height:20,borderRadius:"50%",background:col,display:"inline-flex",alignItems:"center",
               justifyContent:"center",fontSize:8,fontWeight:700,color:"#fff",flexShrink:0,letterSpacing:0,cursor:"default"}}>
@@ -556,23 +568,25 @@ function ItemRow({item,phaseId,sectionId,team,onUpdate,onDelete,noteOpen,onToggl
           <i className="ti ti-link" style={{fontSize:10}}/>link
         </a>}
       </div>
-      <div className="item-actions">
+      <div className="item-meta">
         <DeadlineChip deadline={item.deadline||""} onSave={v=>onUpdate({deadline:v})}/>
         <OwnerBadge owner={item.owner} team={team} onUpdate={onUpdate}/>
+      </div>
+      <div className="item-icons">
         <div style={{position:"relative"}} ref={linkRef}>
           <button className={"icon-btn"+(item.link?" on-link":"")} onClick={()=>setLinkOpen(o=>!o)} title={item.link?"Edit link":"Add link"}>
-            <i className="ti ti-link" style={{fontSize:14}}/>
+            <i className="ti ti-link" style={{fontSize:13}}/>
           </button>
           {linkOpen&&<LinkEditor link={item.link||""} onSave={v=>onUpdate({link:v})} onClose={()=>setLinkOpen(false)}/>}
         </div>
         <button className={"icon-btn"+(noteOpen?" on-note":"")} onClick={onToggleNote} title="Notes">
-          <i className="ti ti-notes" style={{fontSize:14}}/>
+          <i className="ti ti-notes" style={{fontSize:13}}/>
         </button>
-        <button className={"icon-btn"+(item.flag?" on-flag":"")} onClick={()=>onUpdate({flag:!item.flag})} title="Flag">
-          <i className="ti ti-flag" style={{fontSize:14}}/>
+        <button className={"icon-btn"+(item.flag?" on-flag":"")} onClick={()=>onUpdate({flag:!item.flag})} title={item.flag?"Clear flag":"Flag item"}>
+          <i className="ti ti-flag" style={{fontSize:13}}/>
         </button>
         <button className="icon-btn del" onClick={()=>{if(window.confirm("Delete this task?"))onDelete();}} title="Delete">
-          <i className="ti ti-trash" style={{fontSize:13}}/>
+          <i className="ti ti-trash" style={{fontSize:12}}/>
         </button>
       </div>
     </div>
@@ -1131,7 +1145,7 @@ function App(){
         if(!ph.find(p=>p.id==="state_permit")){
           const newPhases=DATA.filter(p=>!ph.find(op=>op.id===p.id));
           ph=[...ph.filter(p=>p.id!=="permit"),...newPhases];
-          localStorage.setItem(SK,JSON.stringify(ph));
+          localStorage.setItem(SK,JSON.stringify(ph)); setSyncTs(Date.now());
         }
       } else {
         const v5=localStorage.getItem("kelly_271_v5");
@@ -1143,14 +1157,14 @@ function App(){
         } else {
           ph=DATA;
         }
-        localStorage.setItem(SK,JSON.stringify(ph));
+        localStorage.setItem(SK,JSON.stringify(ph)); setSyncTs(Date.now());
       }
       setPhases(ph);setTab(ph[0]?.id||null);
     }catch(e){console.error(e);setPhases(DATA);setTab(DATA[0].id);}
     try{const r=localStorage.getItem(SK_TEAM);setTeam(r?JSON.parse(r):DEFAULT_TEAM);}catch{setTeam(DEFAULT_TEAM);}
   },[]);
 
-  const pp=useCallback(ph=>{try{localStorage.setItem(SK,JSON.stringify(ph));}catch{}},[]);
+  const pp=useCallback(ph=>{try{localStorage.setItem(SK,JSON.stringify(ph)); setSyncTs(Date.now());}catch{}},[]);
   const pt=useCallback(tm=>{try{localStorage.setItem(SK_TEAM,JSON.stringify(tm));}catch{}},[]);
   const setTeamP=useCallback(tm=>{setTeam(tm);pt(tm);},[pt]);
 
