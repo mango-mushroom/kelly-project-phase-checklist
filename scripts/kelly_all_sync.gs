@@ -21,6 +21,13 @@ var COL_SECTION = 0;
 var COL_DONE    = 3;
 var COL_ITEM    = 5;
 
+// ── KEY SANITIZER ────────────────────────────────────────────────────────────
+// Firebase keys cannot contain . # $ / [ ] or be empty.
+// Replace all invalid chars with _ so writes never 400.
+function sanitizeKey(k) {
+  return String(k || 'blank').replace(/[.#$\/\[\]]/g, '_').trim() || 'blank';
+}
+
 // ── WEB APP ───────────────────────────────────────────────────────────────────
 
 function doGet(e) {
@@ -124,7 +131,7 @@ function getConfigFromSheet(ss) {
     var val = String(data[r][1] || '').trim();
     // Skip section headers (start with —) and blank rows
     if (!key || key.startsWith('—') || !val) continue;
-    config[key] = val;
+    config[sanitizeKey(key)] = val;
   }
   Logger.log('getConfigFromSheet: ' + Object.keys(config).length + ' keys');
   return config;
@@ -169,11 +176,12 @@ function getScheduleFromSheet(ss) {
   var headers = data[headerRow].map(function(h){ return String(h||'').trim(); });
   var result  = {};
   for (var r = headerRow + 1; r < data.length; r++) {
-    var phase = String(data[r][0] || '').trim();
-    if (!phase) continue;
+    var phase = sanitizeKey(String(data[r][0] || '').trim());
+    if (!phase || phase === 'blank') continue;
     result[phase] = {};
     for (var c = 1; c < headers.length; c++) {
-      if (headers[c]) result[phase][headers[c]] = String(data[r][c] || '').trim();
+      var hk = sanitizeKey(headers[c]);
+      if (hk && hk !== 'blank') result[phase][hk] = String(data[r][c] || '').trim();
     }
   }
   Logger.log('getScheduleFromSheet: ' + Object.keys(result).length + ' phases');
